@@ -1,4 +1,4 @@
-package com.kolaczynski.astro;
+package com.kolaczynski.astroweather;
 
 import org.junit.Test;
 

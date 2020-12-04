@@ -1,4 +1,4 @@
-package com.kolaczynski.astro;
+package com.kolaczynski.astroweather;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.kolaczynski.astro", appContext.getPackageName());
+        assertEquals("com.kolaczynski.astroweather", appContext.getPackageName());
     }
 }

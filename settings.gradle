@@ -1,2 +1,3 @@
+include ':astrocalculator'
 include ':app'
-rootProject.name = "Astro"
+rootProject.name = "AstroWeather"
