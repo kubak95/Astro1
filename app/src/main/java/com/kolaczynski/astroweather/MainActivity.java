@@ -1,16 +1,18 @@
 package com.kolaczynski.astroweather;
 
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.util.DisplayMetrics;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.res.Configuration;
-import android.media.VolumeShaper;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.widget.TextView;
-
+import com.astrocalculator.AstroDateTime;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,17 +35,17 @@ public class MainActivity extends AppCompatActivity {
         TabItem tablet;
         ViewPager viewPager;
 
-        if (diagonalInches>=6.5){
-            if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+        if (diagonalInches >= 6.5) {
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 tabLayout = findViewById(R.id.tabBarTabletLandscape);
                 tablet = findViewById(R.id.tabletLandscape);
                 viewPager = findViewById(R.id.viewPagerTabletLandscape);
-            }else { //if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            } else { //if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
                 tabLayout = findViewById(R.id.tabBarTablet);
                 tablet = findViewById(R.id.tablet);
                 viewPager = findViewById(R.id.viewPagerTablet);
             }
-        }else {
+        } else {
             // smaller device
             if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 tabLayout = findViewById(R.id.tabBarLandscape);
@@ -70,11 +72,28 @@ public class MainActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 finalViewPager.setCurrentItem(tab.getPosition());
             }
+
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {}
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {}
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
         });
         finalViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
+
+
+    Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+    public int year =calendar.get(Calendar.YEAR);
+    public int month =calendar.get(Calendar.MONTH)+1;
+    public int day =calendar.get(Calendar.DATE);
+    public int hour = calendar.get(Calendar.HOUR_OF_DAY);
+    public int minute = calendar.get(Calendar.MINUTE);
+    public int second =calendar.get(Calendar.SECOND);
+
+    AstroDateTime date_time = new AstroDateTime(year, month, day, hour, minute, second, 0, true);
+//    AstroDateTime date_time = new AstroDateTime(year, month, day, hour, minute, second, getOffsetHours(TimeZone.getDefault()), true);
+
 }
