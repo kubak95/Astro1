@@ -31,7 +31,7 @@
                 android:textSize="25sp" />
 
             <TextView
-                android:id="@+id/curent_time"
+                android:id="@+id/current_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

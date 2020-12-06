@@ -3,6 +3,7 @@ package com.kolaczynski.astroweather;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -15,7 +16,7 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity {
-
+private Thread updateClock;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+
         final ViewPager finalViewPager = viewPager;
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         finalViewPager.setAdapter(pagerAdapter);
@@ -82,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         finalViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
     }
 
 
@@ -96,4 +99,34 @@ public class MainActivity extends AppCompatActivity {
     AstroDateTime date_time = new AstroDateTime(year, month, day, hour, minute, second, 0, true);
 //    AstroDateTime date_time = new AstroDateTime(year, month, day, hour, minute, second, getOffsetHours(TimeZone.getDefault()), true);
 
+
+ /*   public void updateTime(){
+//        String timeString = calendar.getTime().toString();
+
+        currentTime123.setText("Arbuz");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        updateClock = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (!updateClock.isInterrupted()) {
+                        Thread.sleep(1000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                updateTime();
+                            }
+
+                        });
+                    }
+                } catch (InterruptedException e) {}
+            }
+        };
+        updateClock.start();
+    }
+*/
 }

@@ -1,6 +1,7 @@
 package com.kolaczynski.astroweather;
 
 import android.util.Log;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
